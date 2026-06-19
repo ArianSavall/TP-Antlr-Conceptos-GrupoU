@@ -1,1 +1,21 @@
-hello world
+program miprograma {
+    var x;
+
+    x = 5;
+
+    var y;
+
+    y = 10;
+
+    var z;
+
+    z = x + y + 6;
+
+    println 8+4/2*2-3;
+
+    println x;
+
+    println x + y;
+
+    println z;
+}
