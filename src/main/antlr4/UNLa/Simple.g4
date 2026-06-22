@@ -23,7 +23,7 @@ println: PRINTLN expression SEMICOLON
         {System.out.println($expression.value);};
 
 expression returns [Object value]:
-        t1=factor {$value = $t1.value;} // Quitamos el (int) inicial
+        t1=factor {$value = $t1.value;}
         (PLUS t2=factor {
             // Manejo básico para permitir concatenación de strings o suma de enteros
             if ($value instanceof Integer && $t2.value instanceof Integer) {
@@ -35,7 +35,7 @@ expression returns [Object value]:
         | MINUS t2=factor {$value = (int) $value - (int)$t2.value;})*;
 
 factor returns [Object value]:
-        t1=term {$value = $t1.value;} // Quitamos el (int) inicial
+        t1=term {$value = $t1.value;}
         (MULT t2=term {$value = (int) $value * (int)$t2.value;}
         | DIV t2=term {$value = (int) $value / (int)$t2.value;})*;
 
@@ -96,4 +96,6 @@ INT: NUMBER;
 FLOAT: NUMBER DOT NUMBER;
 STRING: '"' ~'"'* '"';
 
+LINE_COMMENT: '//' ~[\r\n]* -> skip;
+MULTIPLE_LINE_COMMENT:'/*' .*? '*/' -> skip;
 WS:	[ \t\r\n]+ -> skip;
