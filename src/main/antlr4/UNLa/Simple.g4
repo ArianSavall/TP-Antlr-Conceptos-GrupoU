@@ -21,22 +21,42 @@ var_assign: ID ASSIGN expression SEMICOLON
         {symbolTable.put($ID.text, $expression.value);};
 println: PRINTLN expression SEMICOLON
         {System.out.println($expression.value);};
+
 expression returns [Object value]:
-        t1=factor {$value = (int)$t1.value;}
-        (PLUS t2=factor {$value = (int) $value + (int)$t2.value;}
+        t1=factor {$value = $t1.value;} // Quitamos el (int) inicial
+        (PLUS t2=factor {
+            // Manejo básico para permitir concatenación de strings o suma de enteros
+            if ($value instanceof Integer && $t2.value instanceof Integer) {
+                $value = (int)$value + (int)$t2.value;
+            } else {
+                $value = String.valueOf($value) + String.valueOf($t2.value);
+            }
+        }
         | MINUS t2=factor {$value = (int) $value - (int)$t2.value;})*;
+
 factor returns [Object value]:
-        t1=term {$value = (int)$t1.value;}
+        t1=term {$value = $t1.value;} // Quitamos el (int) inicial
         (MULT t2=term {$value = (int) $value * (int)$t2.value;}
         | DIV t2=term {$value = (int) $value / (int)$t2.value;})*;
+
 term returns [Object value]:
         NUMBER {$value = Integer.parseInt($NUMBER.text);}
-        | ID {$value = symbolTable.get($ID.text);}
-        | PAR_OPEN expression PAR_CLOSE;
+        | STRING {
+            String text = $STRING.text;
+            $value = text.substring(1, text.length() - 1);
+        }
+        | ID {
+            $value = symbolTable.get($ID.text);
+            if ($value == null) {
+                System.err.println("Error: Variable no definida -> " + $ID.text);
+                $value = 0;
+            }
+        }
+        | PAR_OPEN e=expression PAR_CLOSE {$value = $e.value;};
 
-PROGRAM:'program';
-VAR: 'var';
+PROGRAM: 'program';
 PRINTLN: 'println';
+VAR: 'var';
 
 PLUS: '+';
 MINUS: '-';
@@ -62,10 +82,18 @@ BRACKET_CLOSE:'}';
 PAR_OPEN:'(';
 PAR_CLOSE:')';
 
+DOUBLE_QUOTE: '"';
+
+DOT: '.';
+
 SEMICOLON:';';
 
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 
 NUMBER: [0-9]+;
+
+INT: NUMBER;
+FLOAT: NUMBER DOT NUMBER;
+STRING: '"' ~'"'* '"';
 
 WS:	[ \t\r\n]+ -> skip;

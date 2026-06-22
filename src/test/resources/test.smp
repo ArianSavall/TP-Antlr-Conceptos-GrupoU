@@ -1,7 +1,7 @@
 program miprograma {
     var x;
 
-    x = 5;
+    x = 2;
 
     var y;
 
@@ -18,4 +18,10 @@ program miprograma {
     println x + y;
 
     println z;
+
+    var leyenda;
+
+    leyenda = "hola mundo";
+
+    println leyenda + " " + y;
 }
