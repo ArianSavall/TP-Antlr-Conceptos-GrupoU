@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6893d365-4436-4b5b-8cf9-707c17063308" name="Changes" comment="Added String type to grammar">
+    <list default="true" id="6893d365-4436-4b5b-8cf9-707c17063308" name="Changes" comment="Implemented Single Line and Multiple Line comments.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/antlr4/UNLa/Simple.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/UNLa/Simple.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/test.smp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test.smp" afterDir="false" />
@@ -92,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1782166702764</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented Single Line and Multiple Line comments.">
+      <created>1782167109627</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1782167109627</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +116,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit: Project created with Antlr4 archetype." />
     <MESSAGE value="Added String type to grammar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added String type to grammar" />
+    <MESSAGE value="Implemented Single Line and Multiple Line comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Single Line and Multiple Line comments." />
   </component>
 </project>

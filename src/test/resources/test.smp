@@ -1,27 +1,22 @@
 program miprograma {
-    var x;
-
-    x = 2;
-
     var y;
 
     y = 10;
-
-    var z;
-
-    z = x + y + 6;
-
-    println 8+4/2*2-3;
-
-    println x;
-
-    println x + y;
-
-    println z;
 
     var leyenda;
 
     leyenda = "hola mundo";
 
     println leyenda + " " + y;
+
+
+    var float1;
+    float1 = 2.5;
+
+    var float2;
+    float2 = 2.3;
+
+    println float2 * y;
+
+    println leyenda + float1;
 }
