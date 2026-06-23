@@ -71,53 +71,80 @@ grammar Simple;
 }
 
 program: PROGRAM ID BRACKET_OPEN
-    sentence*
-    BRACKET_CLOSE;
+    {
+         List<ASTNode> body = new ArrayList<ASTNode>();
+         Map<String, Object> symbolTable = new HashMap<String, Object>();
+    }
+    (sentence{body.add($sentence.node);})*
+    BRACKET_CLOSE
+    {
+        for(ASTNode n : body){
+            n.execute(symbolTable);
+        }
+    };
 
-sentence: var_decl | var_assign | println;
+sentence returns [ASTNode node]:  println {$node = $println.node;}
+                | conditional{$node = $conditional.node;}
+                | var_decl {$node = $var_decl.node;}
+                | var_assign {$node = $var_assign.node;};
 
-var_decl: VAR ID (ASSIGN expression)? SEMICOLON
-        {
-            try{
-                symbolTable.put($ID.text, $expression.value);
-            }catch(NullPointerException e){
-                symbolTable.put($ID.text, 0);
-            }
-        };
-var_assign: ID ASSIGN expression SEMICOLON
-        {symbolTable.put($ID.text, $expression.value);};
-println: PRINTLN expression SEMICOLON
-        {System.out.println($expression.value);};
+println returns [ASTNode node]: PRINTLN expression SEMICOLON
+        {$node = new Println($expression.node)};
 
-expression returns [Object value]:
-        t1=factor {$value = $t1.value;}
-        (PLUS t2=factor {$value = sumar($value, $t2.value);}
-        | MINUS t2=factor {$value = restar($value, $t2.value);})*;
+conditional returns [ASTNode node]: IF PAR_OPEN expression PAR_CLOSE
+             {
+                List<ASTNode> body = new ArrayList<ASTNode>();
+             }
+             BRACKET_OPEN (s1=sentence{body.add($s1.node);})* BRACKET_CLOSE
+             ELSE
+             {
+                List<ASTNode> elseBody = new ArrayList<ASTNode>();
+             }
+             BRACKET_OPEN (s2=sentence{elseBody.add($s2.node);})* BRACKET_CLOSE
+             {
+                $node = new If($expression.node, body, elseBody);
+             }
+             ;
 
-factor returns [Object value]:
-        t1=term {$value = $t1.value;}
-        (MULT t2=term {$value = multiplicar($value, $t2.value);}
-        | DIV t2=term {$value = dividir($value, $t2.value);})*;
+var_decl returns [ASTNode node]:
 
-term returns [Object value]:
-        INT {$value = Integer.parseInt($INT.text);}
-        | FLOAT {$value = Double.valueOf($FLOAT.text);}
+    VAR ID SEMICOLON {$node = new VarDecl($ID.text);}
+
+;
+
+var_assign returns [ASTNode node]:
+
+    ID ASSIGN expression SEMICOLON {$node = new VarAssign($ID.text, $expression.node);}
+
+;
+
+expression returns [ASTNode node]:
+        t1=factor {$node = $t1.node;}
+        (PLUS t2=factor {$node = new Addition($node, $t2.node);}
+        | MINUS t2=factor {$node = new Subtraction($node, $t2.node);})*;
+
+factor returns [ASTNode node]:
+        t1=term {$node = $t1.node;}
+        (MULT t2=term {$node = new Multiplication($node, $t2.node);}
+        | DIV t2=term {$node = new Divition($node, $t2.node);})*;
+
+term returns [ASTNode node]:
+        INT {$node = new Constant(Integer.parseInt($INT.text));}
+        | FLOAT {$node = new Constant(Double.parseDouble($FLOAT.text));}
         | STRING {
-            String text = $STRING.text;
-            $value = text.substring(1, text.length() - 1);
+            String textoConComillas = $STRING.text;
+            String textoLimpio = textoConComillas.substring(1, textoConComillas.length() - 1);
+            $node = new Constant(textoLimpio);
         }
-        | ID {
-            $value = symbolTable.get($ID.text);
-            if ($value == null) {
-                System.err.println("Error: Variable no definida -> " + $ID.text);
-                $value = 0;
-            }
-        }
-        | PAR_OPEN e=expression PAR_CLOSE {$value = $e.value;};
+        | ID {$node = new VarReff($ID.text);}
+        | BOOLEAN {$node = new Constant(Boolean.parseBoolean($BOOLEAN.text));}
+        | PAR_OPEN e=expression {$node = $expression.node;} PAR_CLOSE;
 
 PROGRAM: 'program';
 PRINTLN: 'println';
 VAR: 'var';
+IF: 'if';
+ELSE: 'else';
 
 PLUS: '+';
 MINUS: '-';
@@ -148,6 +175,8 @@ DOUBLE_QUOTE: '"';
 DOT: '.';
 
 SEMICOLON:';';
+
+BOOLEAN: 'true' | 'false';
 
 INT: NUMBER;
 FLOAT: NUMBER DOT NUMBER;

@@ -1,22 +1,13 @@
 program miprograma {
-    var y;
 
-    println y;
+    var x;
+    x = 5;
 
-    /*var leyenda;
+    if(false){
+        println 2 + 2 * 4;
+    }else{
+        println x;
+    }
 
-    leyenda = "hola mundo";
 
-    println leyenda + " " + y;
-
-
-    var float1;
-    float1 = 2.5;
-
-    var float2;
-    float2 = 2.3;
-
-    println float2 * y;
-
-    println leyenda + float1;*/
 }
