@@ -1,9 +1,9 @@
 program miprograma {
     var y;
 
-    y = 10;
+    println y;
 
-    var leyenda;
+    /*var leyenda;
 
     leyenda = "hola mundo";
 
@@ -18,5 +18,5 @@ program miprograma {
 
     println float2 * y;
 
-    println leyenda + float1;
+    println leyenda + float1;*/
 }

@@ -76,8 +76,14 @@ program: PROGRAM ID BRACKET_OPEN
 
 sentence: var_decl | var_assign | println;
 
-var_decl: VAR ID SEMICOLON
-        {symbolTable.put($ID.text, 0);};
+var_decl: VAR ID (ASSIGN expression)? SEMICOLON
+        {
+            try{
+                symbolTable.put($ID.text, $expression.value);
+            }catch(NullPointerException e){
+                symbolTable.put($ID.text, 0);
+            }
+        };
 var_assign: ID ASSIGN expression SEMICOLON
         {symbolTable.put($ID.text, $expression.value);};
 println: PRINTLN expression SEMICOLON
