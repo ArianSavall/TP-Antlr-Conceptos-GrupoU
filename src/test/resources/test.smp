@@ -3,11 +3,13 @@ program miprograma {
     var x;
     x = 5;
 
-    if(false){
+    var condition = (3 + 3) != 2;
+
+    println condition;
+
+    if(condition){
         println 2 + 2 * 4;
     }else{
         println x;
     }
-
-
 }

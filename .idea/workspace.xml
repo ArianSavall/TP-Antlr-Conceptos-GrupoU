@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6893d365-4436-4b5b-8cf9-707c17063308" name="Changes" comment="Implemented Single Line and Multiple Line comments.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/ASTNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Addition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Divition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/If.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Multiplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Println.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Subtraction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/VarAssign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/VarDecl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/VarReff.java" afterDir="false" />
+    <list default="true" id="6893d365-4436-4b5b-8cf9-707c17063308" name="Changes" comment="Implemented optional variable initialization.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Comparation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/antlr4/UNLa/Simple.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/UNLa/Simple.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UNLa/ast/Addition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Addition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UNLa/ast/Divition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Divition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UNLa/ast/Multiplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Multiplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UNLa/ast/Subtraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Subtraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/test.smp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test.smp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,6 +97,7 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3FN36wI5bt7XfbZoLU89l7UvJWT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

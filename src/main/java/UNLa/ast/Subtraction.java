@@ -14,6 +14,19 @@ public class Subtraction implements ASTNode{
 
     @Override
     public Object execute(Map<String, Object> symbolTable) {
-        return (int)operand1.execute(symbolTable) - (int)operand2.execute(symbolTable);
+        double num1 = ((Number) operand1.execute(symbolTable)).doubleValue();
+        double num2 = ((Number) operand2.execute(symbolTable)).doubleValue();
+
+        System.out.println("num1: " + num1);
+        System.out.println("num2: " + num2);
+
+        double result = num1 - num2;
+        System.out.println("result: " + result);
+        if (result % 1 == 0) {
+            System.out.println("Soy entero");
+            return (int) result;
+        }
+
+        return result;
     }
 }

@@ -14,6 +14,18 @@ public class Divition implements ASTNode{
 
     @Override
     public Object execute(Map<String, Object> symbolTable) {
-        return (int)operand1.execute(symbolTable) / (int)operand2.execute(symbolTable);
+        double divisor = ((Number) operand2.execute(symbolTable)).doubleValue();
+        if (divisor == 0.0) {
+            System.err.println("Error: División por cero.");
+            return 0;
+        }
+
+        double result = ((Number) operand1.execute(symbolTable)).doubleValue() / divisor;
+
+        if (result % 1 == 0) {
+            return (int) result;
+        }
+
+        return result;
     }
 }

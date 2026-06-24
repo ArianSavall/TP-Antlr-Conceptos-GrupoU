@@ -3,71 +3,11 @@ grammar Simple;
 @parser::header{
     import java.util.Map;
     import java.util.HashMap;
+    import UNLa.ast.*;
 }
 
 @parser::members {
     Map<String, Object> symbolTable = new HashMap<String, Object>();
-
-    private Object sumar(Object a, Object b) {
-        try{
-            double num1 = ((Number)a).doubleValue();
-            double num2 = ((Number)b).doubleValue();
-
-            double result = num1 + num2;
-
-            if (result % 1 == 0) {
-                return (int) result;
-            }
-
-            return result;
-        }catch(Exception e){
-            return String.valueOf(a) + String.valueOf(b);
-        }
-    }
-
-    private Object restar(Object a, Object b) {
-        double num1 = ((Number)a).doubleValue();
-        double num2 = ((Number)b).doubleValue();
-
-        double result = num1 - num2;
-
-        if (result % 1 == 0) {
-            return (int) result;
-        }
-
-        return result;
-    }
-
-    private Object multiplicar(Object a, Object b) {
-        double num1 = ((Number)a).doubleValue();
-        double num2 = ((Number)b).doubleValue();
-
-        double result = num1 * num2;
-
-        if (result % 1 == 0) {
-            return (int) result;
-        }
-
-        return result;
-    }
-
-    private Object dividir(Object a, Object b) {
-        double divisor = ((Number)b).doubleValue();
-
-        // Buena práctica: Evitar la división por cero
-        if (divisor == 0.0) {
-            System.err.println("Error: División por cero.");
-            return 0;
-        }
-
-        double result = ((Number)a).doubleValue() / divisor;
-
-        if (result % 1 == 0) {
-            return (int) result;
-        }
-
-        return result;
-    }
 }
 
 program: PROGRAM ID BRACKET_OPEN
@@ -89,7 +29,7 @@ sentence returns [ASTNode node]:  println {$node = $println.node;}
                 | var_assign {$node = $var_assign.node;};
 
 println returns [ASTNode node]: PRINTLN expression SEMICOLON
-        {$node = new Println($expression.node)};
+        {$node = new Println($expression.node);};
 
 conditional returns [ASTNode node]: IF PAR_OPEN expression PAR_CLOSE
              {
@@ -108,8 +48,13 @@ conditional returns [ASTNode node]: IF PAR_OPEN expression PAR_CLOSE
 
 var_decl returns [ASTNode node]:
 
-    VAR ID SEMICOLON {$node = new VarDecl($ID.text);}
-
+    VAR ID (ASSIGN expression)? SEMICOLON {
+        try{
+            $node = new VarAssign($ID.text, $expression.node);
+        }catch(NullPointerException e){
+            $node = new VarDecl($ID.text);
+        }
+    }
 ;
 
 var_assign returns [ASTNode node]:
@@ -119,6 +64,14 @@ var_assign returns [ASTNode node]:
 ;
 
 expression returns [ASTNode node]:
+    t1=comparation {$node = $t1.node;}
+;
+comparation returns [ASTNode node]:
+    t1=arithmetic_expr {$node = $t1.node;}
+    (op=COMPARATOR t2=arithmetic_expr {$node = new Comparation($node, $t2.node, $op.text);})?
+;
+
+arithmetic_expr returns [ASTNode node]:
         t1=factor {$node = $t1.node;}
         (PLUS t2=factor {$node = new Addition($node, $t2.node);}
         | MINUS t2=factor {$node = new Subtraction($node, $t2.node);})*;
@@ -154,6 +107,8 @@ DIV: '/';
 AND: '&&';
 OR: '||';
 NOT: '!';
+
+COMPARATOR: GT | LT | EQ | NEQ | GEQ | LEQ;
 
 GT: '>';
 LT: '<';
