@@ -17,13 +17,10 @@ public class Subtraction implements ASTNode{
         double num1 = ((Number) operand1.execute(symbolTable)).doubleValue();
         double num2 = ((Number) operand2.execute(symbolTable)).doubleValue();
 
-        System.out.println("num1: " + num1);
-        System.out.println("num2: " + num2);
-
         double result = num1 - num2;
-        System.out.println("result: " + result);
+
         if (result % 1 == 0) {
-            System.out.println("Soy entero");
+
             return (int) result;
         }
 

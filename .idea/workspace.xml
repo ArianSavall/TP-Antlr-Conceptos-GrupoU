@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6893d365-4436-4b5b-8cf9-707c17063308" name="Changes" comment="Implemented logical Or, And &amp; Not.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/WhileNode.java" afterDir="false" />
+    <list default="true" id="6893d365-4436-4b5b-8cf9-707c17063308" name="Changes" comment="Implemented Single Line and Multiple Line comments.">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test_expresiones.smp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test_expresiones_logicas.smp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test_if.smp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test_tipo_datos.smp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test_variables.smp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/antlr4/UNLa/Simple.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/antlr4/UNLa/Simple.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/test.smp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test.smp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UNLa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UNLa/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UNLa/ast/Subtraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UNLa/ast/Subtraction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,61 +35,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000018730959" />
-      <entry key="MS500" value="1.028478757617145" />
-      <entry key="S2" value="1.4715570360064807" />
-      <entry key="S5" value="2.445679607506031" />
-      <entry key="S10" value="3.830289342598248" />
-      <entry key="S30" value="7.35025505527783" />
-      <entry key="S60" value="11.589116678391978" />
-      <entry key="M2" value="19.162653654814385" />
-      <entry key="M5" value="34.4202668213373" />
-      <entry key="M10" value="54.945219954887335" />
-      <entry key="M15" value="74.77465510780172" />
-      <entry key="M30" value="124.84347193846887" />
-      <entry key="H1" value="182.45981504238003" />
-      <entry key="H2" value="229.251926998803" />
-      <entry key="H4" value="259.60446932565156" />
-      <entry key="D1" value="289.459796138337" />
-      <entry key="W1" value="295.05327861026456" />
+      <entry key="MS100" value="1.0123782945900888" />
+      <entry key="MS500" value="1.79684855656505" />
+      <entry key="S2" value="3.607605550684047" />
+      <entry key="S5" value="5.996026202819372" />
+      <entry key="S10" value="9.372973143986904" />
+      <entry key="S30" value="22.783188728555924" />
+      <entry key="S60" value="35.350901713063635" />
+      <entry key="M2" value="47.74063675685727" />
+      <entry key="M5" value="71.86863428970331" />
+      <entry key="M10" value="113.6579572752935" />
+      <entry key="M15" value="152.4303288973679" />
+      <entry key="M30" value="242.24469330419026" />
+      <entry key="H1" value="346.1823006952488" />
+      <entry key="H2" value="435.90591905414067" />
+      <entry key="H4" value="497.1931244626134" />
+      <entry key="D1" value="559.9304347278105" />
+      <entry key="W1" value="571.9561273654703" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="9.135529403668686E-233" />
-      <entry key="S2" value="1.0894694920792342E-58" />
-      <entry key="S5" value="9.193521613586088E-24" />
-      <entry key="S10" value="4.690850336211674E-12" />
-      <entry key="S30" value="3.9970046755014526E-4" />
-      <entry key="S60" value="0.05423492145382748" />
-      <entry key="M2" value="0.7873039589097025" />
-      <entry key="M5" value="5.134020414965173" />
-      <entry key="M10" value="11.170843306729598" />
-      <entry key="M15" value="15.35013864742037" />
-      <entry key="M30" value="24.167346513405707" />
-      <entry key="H1" value="34.50376283800502" />
-      <entry key="H2" value="43.45165897245377" />
-      <entry key="H4" value="49.50674755625252" />
-      <entry key="D1" value="55.635933040963536" />
-      <entry key="W1" value="56.80208738162716" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="9.334341876287784E-246" />
+      <entry key="S5" value="1.60447186387337E-98" />
+      <entry key="S10" value="2.475776681288104E-49" />
+      <entry key="S30" value="2.8863604743475954E-16" />
+      <entry key="S60" value="7.254189984145217E-8" />
+      <entry key="M2" value="0.0012836833634601414" />
+      <entry key="M5" value="0.5060322901339969" />
+      <entry key="M10" value="4.313549497311377" />
+      <entry key="M15" value="9.470533279453456" />
+      <entry key="M30" value="23.24633347980379" />
+      <entry key="H1" value="40.53520952843806" />
+      <entry key="H2" value="56.337607908576146" />
+      <entry key="H4" value="67.54215995482993" />
+      <entry key="D1" value="79.31925511703324" />
+      <entry key="W1" value="81.609705814203" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9592641371690875" />
-      <entry key="MS500" value="1.0199204663616723" />
-      <entry key="S2" value="1.4683636436772152" />
-      <entry key="S5" value="2.443554733555812" />
-      <entry key="S10" value="3.828586108888822" />
-      <entry key="S30" value="7.349422748702759" />
-      <entry key="S60" value="11.64147473389815" />
-      <entry key="M2" value="19.9420833382603" />
-      <entry key="M5" value="39.534202358359636" />
-      <entry key="M10" value="66.09439340779247" />
-      <entry key="M15" value="90.10477978143237" />
-      <entry key="M30" value="148.99427742248417" />
-      <entry key="H1" value="216.9511190234178" />
-      <entry key="H2" value="272.69547644112635" />
-      <entry key="H4" value="309.1065164686201" />
-      <entry key="D1" value="345.0948359747642" />
-      <entry key="W1" value="351.85523539524024" />
+      <entry key="MS100" value="0.9446558876621479" />
+      <entry key="MS500" value="1.7722991869695992" />
+      <entry key="S2" value="3.5955815768555595" />
+      <entry key="S5" value="5.9887788465439975" />
+      <entry key="S10" value="9.367552706075537" />
+      <entry key="S30" value="22.778911142812433" />
+      <entry key="S60" value="35.34763936456995" />
+      <entry key="M2" value="47.73973354411265" />
+      <entry key="M5" value="72.37112451708177" />
+      <entry key="M10" value="117.96093100141886" />
+      <entry key="M15" value="161.88608553872703" />
+      <entry key="M30" value="265.4733355274664" />
+      <entry key="H1" value="386.70199561237683" />
+      <entry key="H2" value="492.2326270794226" />
+      <entry key="H4" value="564.7287003550729" />
+      <entry key="D1" value="639.2483915660418" />
+      <entry key="W1" value="653.5656420962434" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -93,7 +97,6 @@
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3FN36wI5bt7XfbZoLU89l7UvJWT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -198,21 +201,7 @@
       <option name="project" value="LOCAL" />
       <updated>1782167109627</updated>
     </task>
-    <task id="LOCAL-00005" summary="Implemented comparations.">
-      <created>1782264532500</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1782264532500</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Implemented logical Or, And &amp; Not.">
-      <created>1782266843287</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1782266843287</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,8 +222,6 @@
     <MESSAGE value="First commit: Project created with Antlr4 archetype." />
     <MESSAGE value="Added String type to grammar" />
     <MESSAGE value="Implemented Single Line and Multiple Line comments." />
-    <MESSAGE value="Implemented comparations." />
-    <MESSAGE value="Implemented logical Or, And &amp; Not." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented logical Or, And &amp; Not." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Single Line and Multiple Line comments." />
   </component>
 </project>

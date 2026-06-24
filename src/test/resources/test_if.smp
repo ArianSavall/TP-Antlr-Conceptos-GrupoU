@@ -1,0 +1,11 @@
+program testIf{
+
+    var nota = 7;
+
+    if(nota >= 6){
+        println "Aprobado";
+    }else{
+        println "Desaprobado";
+    }
+
+}

@@ -1,0 +1,28 @@
+program datos{
+
+    //Creamos los datos
+
+    var entero;
+    var real;
+    var cadena;
+    var booleanoVerdadero;
+    var booleanoFalso;
+
+    //Asignamos valores: enteros, reales y cadena
+
+    entero = 10;
+    real = 3.1416;
+    cadena = "hola mundo";
+
+    //Asignamos valores booleanos
+
+    booleanoVerdadero = true;
+    booleanoFalso = false;
+
+    println entero;
+    println real;
+    println cadena;
+    println booleanoVerdadero;
+    println booleanoFalso;
+
+}

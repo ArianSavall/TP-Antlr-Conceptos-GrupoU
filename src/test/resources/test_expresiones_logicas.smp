@@ -1,0 +1,21 @@
+program expresionesLogicas{
+
+    var edad = 18;
+
+    var esAdulto = edad >= 18;
+
+    var esChico = edad < 12;
+
+    var esDieciocho = edad == 18;
+
+    println edad;
+    println esAdulto;
+    println esChico;
+    println esDieciocho;
+
+    //Hacemos concatenacion de diferentes expresiones logicas en la misma linea
+    var puedeEntrar = esAdulto && (esDieciocho || edad == 21);
+
+    println puedeEntrar;
+
+}

@@ -1,0 +1,15 @@
+program variables{
+
+    //Creamos las variables
+    var y;
+    println y;
+
+    //Tambien podemos asignarle valores en la misma linea
+    var x = 10;
+    println x;
+
+    //Tambien podemos darle como valor otras variables
+    var y = x + 5;
+    println y;
+
+}
