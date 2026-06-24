@@ -1,7 +1,7 @@
 # Trabajo Práctico ANTLR
 
 ## Integrantes:
-- González, Lautaro DNI
+- González, Lautaro DNI 43460582
 - Savall, Arián DNI 46686015
 
 ## Estructura implementada: while
