@@ -1,13 +1,9 @@
 program miprograma {
 
-    var x;
-    x = 5;
+    var finalizado = false;
+    var x = 4.5;
 
-    var condition = (3 + 3) != 2;
-
-    println condition;
-
-    if(condition){
+    if(x > 5 || !finalizado){
         println 2 + 2 * 4;
     }else{
         println x;

@@ -64,8 +64,19 @@ var_assign returns [ASTNode node]:
 ;
 
 expression returns [ASTNode node]:
-    t1=comparation {$node = $t1.node;}
+    t1=logical_or_expr {$node = $t1.node;}
 ;
+
+logical_or_expr returns [ASTNode node]:
+    t1=logical_and_expr {$node = $t1.node;}
+    (OR t2=logical_and_expr {$node = new LogicalOr($node, $t2.node);})*
+;
+
+logical_and_expr returns [ASTNode node]:
+    t1=comparation {$node = $t1.node;}
+    (AND t2=comparation {$node = new LogicalAnd($node, $t2.node);})*
+;
+
 comparation returns [ASTNode node]:
     t1=arithmetic_expr {$node = $t1.node;}
     (op=COMPARATOR t2=arithmetic_expr {$node = new Comparation($node, $t2.node, $op.text);})?
@@ -82,7 +93,8 @@ factor returns [ASTNode node]:
         | DIV t2=term {$node = new Divition($node, $t2.node);})*;
 
 term returns [ASTNode node]:
-        INT {$node = new Constant(Integer.parseInt($INT.text));}
+        NOT t1=term {$node = new LogicalNot($t1.node);}
+        | INT {$node = new Constant(Integer.parseInt($INT.text));}
         | FLOAT {$node = new Constant(Double.parseDouble($FLOAT.text));}
         | STRING {
             String textoConComillas = $STRING.text;
