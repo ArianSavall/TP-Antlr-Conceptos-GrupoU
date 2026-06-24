@@ -1,11 +1,12 @@
 program miprograma {
 
-    var finalizado = false;
-    var x = 4.5;
+    var i = 0;
 
-    if(x > 5 || !finalizado){
-        println 2 + 2 * 4;
-    }else{
-        println x;
+    while(i<5){
+        println "impresion n°" + i;
+
+        i = i + 1;
     }
+
+
 }

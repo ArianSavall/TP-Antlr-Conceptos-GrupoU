@@ -25,6 +25,7 @@ program: PROGRAM ID BRACKET_OPEN
 
 sentence returns [ASTNode node]:  println {$node = $println.node;}
                 | conditional{$node = $conditional.node;}
+                | while_loop{$node = $while_loop.node;}
                 | var_decl {$node = $var_decl.node;}
                 | var_assign {$node = $var_assign.node;};
 
@@ -45,6 +46,17 @@ conditional returns [ASTNode node]: IF PAR_OPEN expression PAR_CLOSE
                 $node = new If($expression.node, body, elseBody);
              }
              ;
+
+while_loop returns [ASTNode node]:
+    WHILE PAR_OPEN expression PAR_CLOSE
+    {
+       List<ASTNode> body = new ArrayList<ASTNode>();
+    }
+    BRACKET_OPEN (s1=sentence{body.add($s1.node);})* BRACKET_CLOSE
+    {
+       $node = new WhileNode($expression.node, body);
+    }
+;
 
 var_decl returns [ASTNode node]:
 
@@ -110,6 +122,7 @@ PRINTLN: 'println';
 VAR: 'var';
 IF: 'if';
 ELSE: 'else';
+WHILE: 'while';
 
 PLUS: '+';
 MINUS: '-';
